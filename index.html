@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAI BMD - Politeknik Artificial Intelligence Budi Mulia Dua</title>
+    <meta name="description" content="PLAI BMD - Tempat belajar dan mengembangkan teknologi AI di Indonesia">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD700',
+                        dark: '#000000',
+                        darkalt: '#111827',
+                        light: '#FFFFFF',
+                        lightalt: '#D1D5DB',
+                    },
+                    fontFamily: {
+                        'urbanist': ['Urbanist', 'sans-serif'],
+                        'dmsans': ['DM Sans', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(to right, #000000, #111827);
+        }
+        
+        .glow-border:hover {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            transform: scale(1.03);
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .gold-glow {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .gold-border {
+            border: 1px solid #FFD700;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-dark text-light overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-blur-sm py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <span class="text-primary font-bold text-2xl">PLAI <span class="text-white">BMD</span></span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-lightalt hover:text-primary transition">Tentang</a>
+                <a href="#benefits" class="text-lightalt hover:text-primary transition">Keunggulan</a>
+                <a href="#partners" class="text-lightalt hover:text-primary transition">Partners</a>
+                <a href="#testimonials" class="text-lightalt hover:text-primary transition">Testimonial</a>
+                <a href="#faculty" class="text-lightalt hover:text-primary transition">Dosen</a>
+            </div>
+            
+            <div class="hidden md:block">
+                <a href="#register" class="bg-primary text-black font-medium px-6 py-2 rounded-full hover:bg-opacity-80 transition">Daftar PMB</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden flex-col justify-center items-center">
+        <button class="absolute top-6 right-6 text-white focus:outline-none">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#about" class="text-xl text-lightalt hover:text-primary transition">Tentang</a>
+            <a href="#benefits" class="text-xl text-lightalt hover:text-primary transition">Keunggulan</a>
+            <a href="#partners" class="text-xl text-lightalt hover:text-primary transition">Partners</a>
+            <a href="#testimonials" class="text-xl text-lightalt hover:text-primary transition">Testimonial</a>
+            <a href="#faculty" class="text-xl text-lightalt hover:text-primary transition">Dosen</a>
+            <a href="#register" class="bg-primary text-black font-medium px-6 py-2 rounded-full hover:bg-opacity-80 transition mt-4">Daftar PMB</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pb-32 gradient-bg overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')] opacity-10 bg-cover bg-center"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-70"></div>
+        
+        <!-- Grid patterns for tech aesthetic -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="w-full h-full" style="background-image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 30px 30px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 neon-text">
+                        Semua Orang Bicara Soal AI<br><span class="text-primary gold-glow">Di Sini, Kamu Belajar Membuatnya</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 text-lightalt">
+                        PLAI bukan sekadar tempat belajar. Di sini awal perjalananmu jadi pelaku utama di era teknologi AI.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#register" class="bg-primary text-black font-bold px-8 py-3 rounded-full hover:bg-opacity-90 transition transform hover:scale-105 text-center">
+                            Daftar PMB
+                        </a>
+                        <a href="#contact" class="border-2 border-primary text-primary font-bold px-8 py-3 rounded-full hover:bg-primary hover:bg-opacity-10 transition transform hover:scale-105 text-center">
+                            Tanya Secara Free
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1351&q=80" alt="Students learning AI" class="rounded-lg w-full md:w-11/12 ml-auto relative z-10 transform hover:scale-[1.02] transition duration-500">
+                    
+                    <!-- Floating tech elements -->
+                    <div class="absolute -top-5 -left-5 bg-primary bg-opacity-20 p-4 rounded-lg backdrop-blur-sm border border-primary border-opacity-30 transform rotate-3 hidden md:block">
+                        <i class="fas fa-robot text-3xl text-primary"></i>
+                    </div>
+                    
+                    <div class="absolute bottom-5 -left-10 bg-darkalt bg-opacity-80 p-3 rounded-lg backdrop-blur-sm border border-primary border-opacity-30 transform -rotate-6 hidden md:block">
+                        <div class="text-xs font-mono text-green-400">model = tf.keras.Sequential()</div>
+                    </div>
+                    
+                    <div class="absolute top-1/4 -right-10 bg-darkalt bg-opacity-80 p-3 rounded-lg backdrop-blur-sm border border-primary border-opacity-30 transform rotate-6 hidden md:block">
+                        <div class="text-xs font-mono text-purple-400">import torch.nn as nn</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section id="benefits" class="py-20 bg-darkalt">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    What You Get <span class="text-primary">Before You Even Graduate?</span>
+                </h2>
+                <p class="text-lightalt max-w-3xl mx-auto">
+                    Kami tidak hanya mengajarkan teknologi AI terbaru, tapi juga mempersiapkanmu untuk industri
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-dark p-6 rounded-xl border border-gray-800 glow-border transition-all duration-300">
+                    <div class="bg-primary bg-opacity-10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Portofolio AI Project</h3>
+                    <p class="text-lightalt">
+                        Bangun 5+ proyek AI yang dapat kamu gunakan sebagai portofolio saat melamar pekerjaan
+                    </p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-dark p-6 rounded-xl border border-gray-800 glow-border transition-all duration-300">
+                    <div class="bg-primary bg-opacity-10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-industry text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Industry Mentorship</h3>
+                    <p class="text-lightalt">
+                        Mentoring dan bimbingan langsung dari praktisi industri teknologi terkemuka
+                    </p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-dark p-6 rounded-xl border border-gray-800 glow-border transition-all duration-300">
+                    <div class="bg-primary bg-opacity-10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-certificate text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sertifikasi BNSP</h3>
+                    <p class="text-lightalt">
+                        Dapatkan sertifikasi resmi dari Badan Nasional Sertifikasi Profesi untuk meningkatkan nilai CV
+                    </p>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-dark p-6 rounded-xl border border-gray-800 glow-border transition-all duration-300">
+                    <div class="bg-primary bg-opacity-10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Job Connector</h3>
+                    <p class="text-lightalt">
+                        Program penempatan kerja dengan perusahaan mitra kami di bidang teknologi informasi
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section id="value-proposition" class="py-20 bg-dark relative overflow-hidden">
+        <!-- Tech grid background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="w-full h-full" style="background-image: linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(to right, #FFD700 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-primary">Apa yang Kamu Dapat</span> di PLAI?
+                </h2>
+                <p class="text-lightalt max-w-3xl mx-auto">
+                    Keunggulan dan fitur yang membuat PLAI BMD berbeda dari kampus lainnya
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 justify-center">
+                <!-- Feature 1 -->
+                <div class="bg-darkalt p-8 rounded-xl border border-gray-800 md:w-1/3 transform transition-all duration-500 hover:-translate-y-2">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code-branch text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Build Real Products</h3>
+                    <p class="text-lightalt mb-4">
+                        Kerjasama dengan perusahaan untuk membuat produk AI yang langsung digunakan di industri. Bukan sekadar tugas kuliah yang tidak diterapkan.
+                    </p>
+                    <ul class="text-lightalt">
+                        <li class="flex items-center mb-2">
+                            <i class="fas fa-check text-primary mr-2"></i> Deployment ke production environment
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="fas fa-check text-primary mr-2"></i> Project management profesional
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Problem solving nyata
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-darkalt p-8 rounded-xl border border-gray-800 md:w-1/3 transform transition-all duration-500 hover:-translate-y-2">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Hands-on Experience</h3>
+                    <p class="text-lightalt mb-4">
+                        70% praktik, 30% teori. Kami percaya kemampuan teknis dibangun dengan latihan intensif dan langsung mengaplikasikan pengetahuan.
+                    </p>
+                    <ul class="text-lightalt">
+                        <li class="flex items-center mb-2">
+                            <i class="fas fa-check text-primary mr-2"></i> Lab AI dengan GPU terbaru
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="fas fa-check text-primary mr-2"></i> Weekly hackathons
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Tech talks dengan praktisi
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-darkalt p-8 rounded-xl border border-gray-800 md:w-1/3 transform transition-all duration-500 hover:-translate-y-2">
+                    <div class="bg-primary bg-opacity-10 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Direct Mentorship</h3>
+                    <p class="text-lightalt mb-4">
+                        Bimbingan 1-on-1 dengan dosen dan mentor dari industri teknologi terkemuka yang benar-benar ahli di bidangnya.
+                    </p>
+                    <ul class="text-lightalt">
+                        <li class="flex items-center mb-2">
+                            <i class="fas fa-check text-primary mr-2"></i> Code review regular
+                        </li>
+                        <li class="flex items-center mb-2">
+                            <i class="fas fa-check text-primary mr-2"></i> Career guidance
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i> Network dengan profesional
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote + Image Block -->
+    <section id="quote-block" class="py-20 bg-darkalt">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="absolute -top-10 -left-10 text-6xl text-primary opacity-30">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                            Paham kok, cari kampus itu <span class="text-primary">gak gampang.</span>
+                        </h2>
+                        <p class="text-lightalt text-lg mb-8">
+                            Apalagi di bidang AI yang terkesan rumit dan sulit dijangkau. PLAI BMD hadir untuk membuktikan bahwa teknologi AI bisa dipelajari dengan cara yang lebih menyenangkan dan praktis.
+                        </p>
+                        <p class="text-primary font-bold">
+                            - Tim Pendidik PLAI BMD
+                        </p>
+                        <div class="absolute -bottom-10 -right-10 text-6xl text-primary opacity-30">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Students collaborating" class="rounded-xl shadow-2xl w-full transform hover:scale-[1.02] transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Narrative Section -->
+    <section id="narrative" class="py-20 bg-dark">
+        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    Indonesia Butuh <span class="text-primary">Lebih dari Sekadar Penonton…</span>
+                </h2>
+                <p class="text-lightalt text-lg mb-6 leading-relaxed">
+                    Tahukah kamu bahwa Indonesia memiliki salah satu jumlah pengguna teknologi digital terbesar di dunia, namun masih kurang dalam hal pengembangan dan inovasi teknologi sendiri? 
+                </p>
+                <p class="text-lightalt text-lg mb-8 leading-relaxed">
+                    Di PLAI BMD, kami percaya bahwa Indonesia memiliki potensi besar untuk menjadi pemain utama di industri teknologi AI global. Kami bertekad mencetak generasi muda yang tidak hanya mengikuti tren tetapi juga menciptakan solusi AI inovatif untuk memecahkan masalah nyata di masyarakat dan industri.
+                </p>
+                <div class="mt-10">
+                    <a href="#register" class="bg-primary text-black font-bold px-8 py-3 rounded-full hover:bg-opacity-90 transition transform hover:scale-105 inline-block">
+                        Mulai Perjalananmu Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Partners Section -->
+    <section id="partners" class="py-20 bg-darkalt">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Dipercaya oleh <span class="text-primary">Industri Teknologi</span>
+                </h2>
+                <p class="text-lightalt max-w-3xl mx-auto">
+                    Kami bekerja sama dengan berbagai perusahaan teknologi terkemuka untuk memastikan kurikulum kami relevan dengan kebutuhan industri
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
+                <!-- Partner 1 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/google.com" alt="Google" class="max-h-12">
+                </div>
+                
+                <!-- Partner 2 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="max-h-12">
+                </div>
+                
+                <!-- Partner 3 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/ibm.com" alt="IBM" class="max-h-12">
+                </div>
+                
+                <!-- Partner 4 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="max-h-12">
+                </div>
+                
+                <!-- Partner 5 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/nvidia.com" alt="NVIDIA" class="max-h-12">
+                </div>
+                
+                <!-- Partner 6 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/intel.com" alt="Intel" class="max-h-12">
+                </div>
+                
+                <!-- Partner 7 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/oracle.com" alt="Oracle" class="max-h-12">
+                </div>
+                
+                <!-- Partner 8 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/adobe.com" alt="Adobe" class="max-h-12">
+                </div>
+                
+                <!-- Partner 9 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/sap.com" alt="SAP" class="max-h-12">
+                </div>
+                
+                <!-- Partner 10 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce" class="max-h-12">
+                </div>
+                
+                <!-- Partner 11 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/cisco.com" alt="Cisco" class="max-h-12">
+                </div>
+                
+                <!-- Partner 12 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/dell.com" alt="Dell" class="max-h-12">
+                </div>
+                
+                <!-- Partner 13 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/hp.com" alt="HP" class="max-h-12">
+                </div>
+                
+                <!-- Partner 14 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/lenovo.com" alt="Lenovo" class="max-h-12">
+                </div>
+                
+                <!-- Partner 15 -->
+                <div class="flex items-center justify-center p-4 filter grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                    <img src="https://logo.clearbit.com/huawei.com" alt="Huawei" class="max-h-12">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-dark">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-primary">Testimonial</span>
+                </h2>
+                <p class="text-lightalt max-w-3xl mx-auto">
+                    Apa kata mereka yang telah bergabung dengan PLAI BMD
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-darkalt p-8 rounded-xl border border-gray-800 transform transition-all duration-500 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-lightalt mb-6 italic">
+                        "PLAI BMD memberi saya fondasi yang kuat di bidang AI. Dosen yang kompeten dan kurikulum yang up-to-date membuat saya siap menghadapi tuntutan industri teknologi saat ini."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah Putri</h4>
+                            <p class="text-primary text-sm">Data Scientist at Tokopedia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-darkalt p-8 rounded-xl border border-gray-800 transform transition-all duration-500 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-lightalt mb-6 italic">
+                        "Saya sangat mengapresiasi pendekatan hands-on di PLAI. Project-based learning membantu saya membangun portfolio yang kuat dan mendapatkan pekerjaan impian saya setelah lulus."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <p class="text-primary text-sm">ML Engineer at Gojek</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-darkalt p-8 rounded-xl border border-gray-800 transform transition-all duration-500 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-lightalt mb-6 italic">
+                        "Fasilitas laboratorium AI yang lengkap dan akses ke mentor industri membuat pengalaman belajar di PLAI sangat berharga. Saya bisa langsung terjun ke dunia kerja dengan percaya diri."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Rina" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rina Wijaya</h4>
+                            <p class="text-primary text-sm">AI Researcher at Telkom</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial Navigation Dots -->
+            <div class="flex justify-center mt-10">
+                <button class="w-3 h-3 rounded-full bg-primary mx-1"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-600 mx-1"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-600 mx-1"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Showcase Section -->
+    <section id="faculty" class="py-20 bg-darkalt">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-primary">Daftar Dosen</span>
+                </h2>
+                <p class="text-lightalt max-w-3xl mx-auto">
+                    Tim pengajar kami terdiri dari akademisi berpengalaman dan praktisi industri teknologi AI
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Dosen 1 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Andi Wijaya" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Andi Wijaya</h3>
+                        <p class="text-primary text-sm">Deep Learning</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 2 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prof. Budi Hartono" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Prof. Budi Hartono</h3>
+                        <p class="text-primary text-sm">Computer Vision</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 3 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Citra Dewi" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Citra Dewi</h3>
+                        <p class="text-primary text-sm">Natural Language Processing</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 4 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Dani Putra" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Dani Putra</h3>
+                        <p class="text-primary text-sm">Robotics & AI</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 5 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Eva Susanti" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Eva Susanti</h3>
+                        <p class="text-primary text-sm">Data Science</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 6 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1563807894768-f28bee0d37b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Ferdi Rahman" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Ferdi Rahman</h3>
+                        <p class="text-primary text-sm">Machine Learning</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 7 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Gita Pratiwi" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Gita Pratiwi</h3>
+                        <p class="text-primary text-sm">AI Ethics</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 8 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Hadi Santoso" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Hadi Santoso</h3>
+                        <p class="text-primary text-sm">Reinforcement Learning</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 9 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Indah Wulandari" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Indah Wulandari</h3>
+                        <p class="text-primary text-sm">AI for Healthcare</p>
+                    </div>
+                </div>
+                
+                <!-- Dosen 10 -->
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Joko Purnomo" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-80 transition-all duration-300 flex flex-col justify-end p-4">
+                        <h3 class="text-white font-bold">Dr. Joko Purnomo</h3>
+                        <p class="text-primary text-sm">Large Language Models</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section id="register" class="py-20 bg-dark relative overflow-hidden">
+        <!-- Tech grid background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="w-full h-full" style="background-image: radial-gradient(#FFD700 1px, transparent 1px); background-size: 20px 20px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-darkalt to-dark p-10 rounded-2xl border border-primary border-opacity-30 shadow-lg">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        Siap bangun karirmu bareng <span class="text-primary">PLAI?</span>
+                    </h2>
+                    <p class="text-lightalt max-w-2xl mx-auto">
+                        Daftar sekarang dan mulai perjalananmu untuk menjadi profesional AI yang berkualitas
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="bg-primary text-black font-bold px-8 py-4 rounded-full hover:bg-opacity-90 transition transform hover:scale-105 text-center">
+                        Daftar Sekarang
+                    </a>
+                    <a href="#" class="border-2 border-primary text-primary font-bold px-8 py-4 rounded-full hover:bg-primary hover:bg-opacity-10 transition transform hover:scale-105 text-center">
+                        Konsultasi Gratis
+                    </a>
+                </div>
+                
+                <div class="mt-8 text-center text-lightalt">
+                    <p>PMB dibuka sepanjang tahun. Hubungi kami untuk informasi lebih lanjut.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkalt pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Column 1: About -->
+                <div>
+                    <h3 class="text-primary font-bold text-xl mb-6">PLAI BMD</h3>
+                    <p class="text-lightalt mb-4">
+                        Politeknik Artificial Intelligence Budi Mulia Dua, institusi pendidikan tinggi yang fokus pada teknologi AI dan aplikasinya.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-lightalt hover:text-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-lightalt hover:text-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-lightalt hover:text-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-lightalt hover:text-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-lightalt hover:text-primary transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Akademik</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Program Studi</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Kurikulum</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Fasilitas</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Kalender Akademik</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Riset</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: More Links -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Admisi</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Cara Pendaftaran</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Biaya Kuliah</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Beasiswa</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">Jadwal PMB</a></li>
+                        <li><a href="#" class="text-lightalt hover:text-primary transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4: Contact -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Hubungi Kami</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-lightalt">Jl. Raya Pendidikan No. 88, Yogyakarta, 55281, Indonesia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-primary mr-3"></i>
+                            <span class="text-lightalt">+62 274 123456</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-lightalt">info@plai-bmd.ac.id</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-lightalt text-sm mb-4 md:mb-0">
+                        &copy; 2025 PLAI BMD. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-lightalt hover:text-primary transition text-sm">Privacy Policy</a>
+                        <a href="#" class="text-lightalt hover:text-primary transition text-sm">Terms of Service</a>
+                        <a href="#" class="text-lightalt hover:text-primary transition text-sm">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating WhatsApp Button -->
+    <div id="whatsapp-widget" class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/6281234567890" target="_blank" class="bg-green-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:bg-green-600 transition transform hover:scale-110">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </a>
+    </div>
+    
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.querySelector('.md\\:hidden');
+        const mobileMenu = document.querySelector('.fixed.inset-0.bg-black');
+        const closeButton = document.querySelector('.fixed.inset-0 button');
+        
+        if (menuButton && mobileMenu && closeButton) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            });
+            
+            closeButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('flex');
+                mobileMenu.classList.add('hidden');
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('flex');
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                // Scroll to target
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
